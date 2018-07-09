@@ -10,6 +10,10 @@
     "sourceType": "module"
   },
   "rules": {
+    "arrow-body-style": ["error", "as-needed"],
+    "arrow-parens": ["error", "as-needed"],
+    "arrow-spacing": ["error", { "before": true, "after": true }],
+    "keyword-spacing": ["error", "always"],
     "comma-dangle": ["error", "always-multiline"],
     "comma-spacing": ["error", { "before": false, "after": true }],
     "eol-last": ["error", "always"],
