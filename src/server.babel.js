@@ -1,4 +1,5 @@
 import express from 'express'
+import morgan from 'morgan'
 import compression from 'compression'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
@@ -12,6 +13,9 @@ mongoose.Promise = global.Promise
 mongoose.connect(dbconfig.url, { useNewUrlParser:true })
 
 const app = express()
+
+//Logger Middleware
+app.use(morgan('dev'));
 
 //Gzip compression
 app.use(compression())
@@ -29,4 +33,4 @@ app.listen(process.env.PORT || DEFAULT_PORT, () => {
   console.log('>>> Server Started on PORT: ' + (process.env.PORT || DEFAULT_PORT)) //eslint-disable-line no-console
 })
 
-module.exports = app
+export default app

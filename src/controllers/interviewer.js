@@ -26,4 +26,4 @@ sanitizeBody('availability.*').customSanitizer(truncateDateToHour),
     })
 })
 
-module.exports = router
+export default router

@@ -5,4 +5,4 @@ var candidateSchema = mongoose.Schema({
   availability : [{ start: Date, end: Date }],
 })
 
-module.exports = mongoose.model('Candidate', candidateSchema)
+export default mongoose.model('Candidate', candidateSchema)

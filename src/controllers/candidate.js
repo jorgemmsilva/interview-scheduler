@@ -6,6 +6,7 @@ import Candidate from '../models/candidate'
 import Interviewer from '../models/interviewer'
 import { handleValidationErrors, handleServerError } from './utils/errorHandling'
 import { truncateDateToHour, getAvailableBlocks } from './utils/dateUtils'
+
 const router = express.Router()
 
 router.post('/set-availability', [
@@ -49,4 +50,4 @@ const getInterviewersQuery = (interviewers) => {
   return { name: interviewers }
 }
 
-module.exports = router
+export default router

@@ -5,4 +5,4 @@ var interviewerSchema = mongoose.Schema({
   availability : [Date],
 })
 
-module.exports = mongoose.model('Interviewer', interviewerSchema)
+export default mongoose.model('Interviewer', interviewerSchema)
