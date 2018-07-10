@@ -38,7 +38,18 @@ npm run watch
 ```
 
 ## Run Tests
-TODO
+
+To run the unit tests, just type:
+
+```bash
+npm run test
+```
+
+For development, similar to `npm run watch` to rebuild the server, its handy to have hotreaload for test files. In order to setup that, as well as a coverage report, run:
+
+```bash
+npm run test:watch
+```
 
 ## Build deployable file
 

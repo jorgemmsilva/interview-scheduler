@@ -15,7 +15,7 @@ mongoose.connect(dbconfig.url, { useNewUrlParser:true })
 const app = express()
 
 //Logger Middleware
-app.use(morgan('dev'));
+app.use(morgan('dev'))
 
 //Gzip compression
 app.use(compression())

@@ -9,6 +9,7 @@ import { truncateDateToHour, getAvailableBlocks } from './utils/dateUtils'
 
 const router = express.Router()
 
+
 router.post('/set-availability', [
   check('name').isString(),
   check('availability.*.start').isISO8601(),
@@ -22,8 +23,8 @@ sanitizeBody('availability.*.*').customSanitizer(truncateDateToHour),
     { name },
     { name, availability },
     { upsert: true },
-    (err) => {
-      if(err) return handleServerError(err, res)
+    err => {
+      if (err) return handleServerError(err, res)
       res.sendStatus(HttpStatus.OK)
     })
 })
@@ -32,20 +33,20 @@ router.get('/:candidate/schedule', (req, res) => {
   const candidateName = req.params.candidate
   const interviewers = req.query.interviewer
   Candidate.findOne({ name: candidateName }, (err, candidate) => {
-    if(err) return handleServerError(err, res)
-    if(!candidate) return res.sendStatus(HttpStatus.NOT_FOUND)
+    if (err) return handleServerError(err, res)
+    if (!candidate) return res.sendStatus(HttpStatus.NOT_FOUND)
     const interviewersQuery = getInterviewersQuery(interviewers)
     Interviewer.find(interviewersQuery, (err, interviewers) => {
-      if(err) return handleServerError(err, res)
+      if (err) return handleServerError(err, res)
       res.json(getAvailableBlocks(candidate, interviewers))
     })
   })
 })
 
-const getInterviewersQuery = (interviewers) => {
-  if(!interviewers) return {}
-  if(Array.isArray(interviewers)){
-    return { name: {$in: interviewers} }
+const getInterviewersQuery = interviewers => {
+  if (!interviewers) return {}
+  if (Array.isArray(interviewers)){
+    return { name: { $in: interviewers } }
   }
   return { name: interviewers }
 }

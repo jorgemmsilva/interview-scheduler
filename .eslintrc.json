@@ -3,7 +3,9 @@
   "env": {
     "node": true,
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jest": true
+
   },
   "parserOptions": {
     "ecmaVersion": 2017,
@@ -13,7 +15,7 @@
     "arrow-body-style": ["error", "as-needed"],
     "arrow-parens": ["error", "as-needed"],
     "arrow-spacing": ["error", { "before": true, "after": true }],
-    "keyword-spacing": ["error", "always"],
+    "keyword-spacing": ["error", { "before": true, "after": true }],
     "comma-dangle": ["error", "always-multiline"],
     "comma-spacing": ["error", { "before": false, "after": true }],
     "eol-last": ["error", "always"],

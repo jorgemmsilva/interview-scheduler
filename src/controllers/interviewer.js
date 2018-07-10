@@ -1,7 +1,7 @@
 import express from 'express'
 import HttpStatus from 'http-status-codes'
 import { check } from 'express-validator/check'
-import { sanitize, sanitizeBody } from 'express-validator/filter'
+import { sanitizeBody } from 'express-validator/filter'
 import Interviewer from '../models/interviewer'
 import { handleValidationErrors, handleServerError } from './utils/errorHandling'
 import { truncateDateToHour } from './utils/dateUtils'
@@ -20,8 +20,8 @@ sanitizeBody('availability.*').customSanitizer(truncateDateToHour),
     { name },
     { name, availability },
     { upsert: true },
-    (err) => {
-      if(err) return handleServerError(err, res)
+    err => {
+      if (err) return handleServerError(err, res)
       res.sendStatus(HttpStatus.OK)
     })
 })

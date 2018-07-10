@@ -2,16 +2,17 @@
   "name": "interview-scheduler",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
-  "sideEffects": false,
+  "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "watch": "nodemon src/server.js",
-    "test": "test",
+    "test": "jest",
+    "test:watch": "jest --watch --onlyChanged --collectCoverageFrom=src/**.js --coverage src",
     "build": "webpack --config webpack.config.js"
   },
-  "author": "",
+  "author": "http://jorgesilva.xyz/",
   "license": "MIT",
+  "sideEffects": false,
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
@@ -19,11 +20,15 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "jest": "^23.3.0",
+    "mockingoose": "^2.10.1",
     "nodemon": "^1.17.5",
+    "supertest": "^3.1.0",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8"
   },
   "dependencies": {
+    "babel-jest": "^23.4.0",
     "body-parser": "^1.18.3",
     "compression": "^1.7.2",
     "express": "^4.16.3",
