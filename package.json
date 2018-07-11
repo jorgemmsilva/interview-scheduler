@@ -8,12 +8,14 @@
     "watch": "nodemon src/server.js",
     "test": "jest",
     "test:watch": "jest --watch --onlyChanged --collectCoverageFrom=src/**.js --coverage src",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js",
+    "generate-documentation": "apidoc -f \"src/controllers/.*\\.js$\" -i ./  -o documentation/"
   },
   "author": "http://jorgesilva.xyz/",
   "license": "MIT",
   "sideEffects": false,
   "devDependencies": {
+    "apidoc": "^0.17.6",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-class-properties": "^6.24.1",
