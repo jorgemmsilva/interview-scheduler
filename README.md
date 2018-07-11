@@ -1,20 +1,17 @@
 # Interview Scheduler
 
-TODO add description
-TODO add documentation
+Simple, PoC express backend application with best practices in mind
 
 ## Setup
 
-### Install Software Dependencies:
+### Installing Software and Node modules Dependencies:
 
+Requirements:
 - MongoDB (>= v3.6.5)
 - NodeJS (>= v8.4.0)
-- Npm (>= v6.1.0) (or yarn)
-
-### Install node modules dependencies
+- Npm (>= v6.1.0) (or Yarn)
 
 Run on cli (command line interface):
-
 ```bash
 npm install
 ```
@@ -23,48 +20,49 @@ npm install
 
 You can costumize the path for your MongoDB instance by editing the following file: `src/config/database.js`
 
-## Start the app (development)
+## Starting the app (development)
 
 Ensure MongoDB is running, then execute on cli:
-
 ```bash
 npm run start
 ```
 
-When developing, it's handy to start the server with the watch option instead, so that it reloads whenever files change:
-
+When developing, it's handy to have the server reloading whenever files change. To archieve that, run:
 ```bash
 npm run watch
 ```
 
-## Run Tests
+## Unit Tests
 
-To run the unit tests, just type:
-
+To run the unit tests:
 ```bash
 npm run test
 ```
 
-For development, similar to `npm run watch` to rebuild the server, its handy to have hotreaload for test files. In order to setup that, as well as a coverage report, run:
-
+For development, similar to `npm run watch` to rebuild the server, its handy to have hotreload for test files. In order to setup this, as well as a coverage report, run:
 ```bash
 npm run test:watch
 ```
 
-## Build deployable file
+## Endpoints Documentation
 
-For production environment, it's a good idea to not have babel transformations running at runtime, also the ability to deploy a single minified file with all the dependencies included is very nice to have. For this you can use webpack to build such a file, by running:
+Generated using [ApiDoc](http://apidocjs.com/)
+schedule will match against all interviewers if none is passed as param
+TODO (mencionar a validação e o truncate das horas)
+
+
+
+## Building a deployable file
+
+For production environment, it's a good idea to not have babel transformations running at runtime. Also, the ability to deploy a single minified file with all the dependencies included is nice to have. We can do this using webpack, by running:
 ```bash
 npm run build
 ```
-This will generate a file located on `dist/server.js`, that can be deployed and run direcly with:
+
+This will generate a file located on `dist/server.js`, that can be deployed and run directly with:
 ```bash
-node my-custom-path/server.js
+node /path_to/server.js
 ```
 NOTES:
  - obviously, there must be a MongoDB instance for the app to connect to
  - if need be, we can debug the deployed application using generated sourcemaps (`dist/server.min.js.map`)
-
-## Building Documentation
-
-TODO

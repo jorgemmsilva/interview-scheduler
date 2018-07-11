@@ -9,13 +9,10 @@ export const truncateDateToHour = date => {
 export const getAvailableBlocks = (candidate, interviewers) => {
   const availableBlocks = []
   interviewers.forEach(interviewer => {
-    const matches = getScheduleMatches(candidate, interviewer)
-    if (matches.length) {
-      availableBlocks.push({
-        interviewer: interviewer.name,
-        availableBlocks: matches,
-      })
-    }
+    availableBlocks.push({
+      interviewer: interviewer.name,
+      availableBlocks: getScheduleMatches(candidate, interviewer),
+    })
   })
   return availableBlocks
 }
@@ -31,6 +28,17 @@ const getScheduleMatches = (candidate, interviewer) => (
   }, [])
 )
 
+export const getBlocksFromTimeInterval = ({ start, end }) => {
+  const blocks = []
+  const block = new Date(Date.parse(start))
+  const endDate = new Date(Date.parse(end))
+  while (block <= endDate){
+    blocks.push(new Date(block))
+    block.setHours(block.getHours()+1)
+  }
+  return blocks
+}
+
 const blockMatchesAvailability = (block, { start, end }) => (
-  block >= start && block <= end
+  block >= start && block < end
 )

@@ -6,9 +6,9 @@ import Candidate from '../models/candidate'
 import Interviewer from '../models/interviewer'
 import { handleValidationErrors, handleServerError } from './utils/errorHandling'
 import { truncateDateToHour, getAvailableBlocks } from './utils/dateUtils'
+import { getInterviewersQuery } from './utils/queries'
 
 const router = express.Router()
-
 
 router.post('/set-availability', [
   check('name').isString(),
@@ -42,13 +42,5 @@ router.get('/:candidate/schedule', (req, res) => {
     })
   })
 })
-
-const getInterviewersQuery = interviewers => {
-  if (!interviewers) return {}
-  if (Array.isArray(interviewers)){
-    return { name: { $in: interviewers } }
-  }
-  return { name: interviewers }
-}
 
 export default router
